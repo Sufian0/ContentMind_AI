@@ -3,7 +3,7 @@
 <% if @recommendations.any? %>
   <ul>
     <% @recommendations.each do |content| %>
-      <li><%= link_to content.title, content_path(content) %></li>
+      <li><%= link_to content.title, content_path(content) %> (<%= content.category %>)</li>
     <% end %>
   </ul>
 <% else %>
