@@ -1,8 +1,11 @@
-<h1>Recommended for You</h1>
+<h1>Your Recommendations</h1>
 
-<% @recommended_contents.each do |content| %>
-  <div>
-    <h2><%= link_to content.title, content_path(content) %></h2>
-    <p><%= content.description %></p>
-  </div>
+<% if @recommendations.any? %>
+  <ul>
+    <% @recommendations.each do |content| %>
+      <li><%= link_to content.title, content_path(content) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>We don't have any recommendations for you yet. Try interacting with more content!</p>
 <% end %>

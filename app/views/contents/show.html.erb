@@ -1,4 +1,7 @@
 <h1><%= @content.title %></h1>
 <p><%= @content.description %></p>
+<p>Category: <%= @content.category %></p>
 
-<%= link_to "Back to all contents", contents_path %>
+<%= button_to 'Like', like_content_path(@content), method: :post %>
+
+<%= link_to 'Back to All Content', contents_path %>

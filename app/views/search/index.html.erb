@@ -1,0 +1,16 @@
+<h1>Search Results</h1>
+
+<%= form_with url: search_index_path, method: :get, local: true do |f| %>
+  <%= f.text_field :q, value: @query %>
+  <%= f.submit "Search" %>
+<% end %>
+
+<% if @results.present? %>
+  <ul>
+    <% @results.each do |content| %>
+      <li><%= link_to content.title, content_path(content) %></li>
+    <% end %>
+  </ul>
+<% elsif @query.present? %>
+  <p>No results found for "<%= @query %>"</p>
+<% end %>

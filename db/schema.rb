@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_22_101708) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_24_023657) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_101708) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "user_interactions", force: :cascade do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_101708) do
     t.string "interaction_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "interaction_value"
     t.index ["content_id"], name: "index_user_interactions_on_content_id"
     t.index ["user_id"], name: "index_user_interactions_on_user_id"
   end

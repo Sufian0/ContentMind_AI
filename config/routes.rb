@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  get 'search/index'
   get 'recommendations/index'
   get 'contents/index'
   get 'contents/show'
   # Root route
-  root 'contents#index'
+  #root 'contents#index'
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -16,10 +18,25 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # Routes for Contents controller
-  resources :contents, only: [:index, :show]
+  resources :contents, only: [:index, :new, :create]
+  resources :contents, only: [:new, :create]
 
+  resources :contents do
+    member do
+      post 'like'
+    end
+  end
+
+  resources :contents do
+    member do
+      post 'like'
+    end
+  end
+  
   # Routes for Recommendations controller
   resources :recommendations, only: [:index]
 
+  resources :search, only: [:index]
+  root 'home#index'
   
 end

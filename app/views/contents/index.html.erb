@@ -1,8 +1,33 @@
-<h1>All Contents</h1>
+<h1>All Content</h1>
 
-<% @contents.each do |content| %>
-  <div>
-    <h2><%= link_to content.title, content_path(content) %></h2>
-    <p><%= content.description %></p>
-  </div>
+<%= link_to 'Add New Content', new_content_path %>
+
+<% if @contents.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contents.each do |content| %>
+        <tr>
+          <td><%= link_to content.title, content_path(content) %></td>
+          <td><%= truncate(content.description, length: 100) %></td>
+          <td><%= content.category %></td>
+          <td><%= content.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+          <td>
+            <%= link_to 'View', content_path(content) %> |
+            <%= button_to 'Like', like_content_path(content), method: :post %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No content available yet.</p>
 <% end %>

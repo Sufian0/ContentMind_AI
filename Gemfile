@@ -6,6 +6,7 @@ gem 'elasticsearch-model'
 gem 'redis'
 gem 'sidekiq'
 gem 'tensorflow'
+gem 'faker'
 gem 'webpacker', '~> 5.0'
 
 ruby "3.3.4"
